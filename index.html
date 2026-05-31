@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hand Cricket Game</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- welcome section -->
+      <section id="welcome-screen">
+        <div class="welcome-emoji">🏏</div>
+        <div class="welcome-heading">Hand Cricket</div>
+        <div class="welcome-sub">3-player team vs computer</div>
+        <div class="welcome-btns">
+          <button class="w-btn w-btn-primary" onclick="showNameScreen()">
+            👥 Make Your Team
+          </button>
+          <button class="w-btn w-btn-secondary" onclick="startGame()">
+            ▶ Play Directly
+          </button>
+        </div>
+      </section>
+
+      <!-- Name entry section -->
+      <section id="name-screen">
+        <div class="name-heading">🧑‍🤝‍🧑 Name Your Team Players</div>
+        <div class="name-sub">Enter names for all 3 players</div>
+        <div class="name-fields">
+          <div class="name-field">
+            <label for="name1">Player 1</label>
+            <input
+              type="text"
+              id="name1"
+              placeholder="e.g. Rohit"
+              maxlength="10"
+            />
+          </div>
+          <div class="name-field">
+            <label for="name2">Player 2</label>
+            <input
+              type="text"
+              id="name2"
+              placeholder="e.g. Virat"
+              maxlength="10"
+            />
+          </div>
+          <div class="name-field">
+            <label for="name3">Player 3</label>
+            <input
+              type="text"
+              id="name3"
+              placeholder="e.g. Dhoni"
+              maxlength="10"
+            />
+          </div>
+        </div>
+        <button class="name-start-btn" onclick="startWithNames()">
+          🏏 Start Match
+        </button>
+        <button class="back-link" onclick="showWelcome()">← Back</button>
+      </section>
+
+      <!-- Main section -->
+      <main id="game-screen">
+        <h1>🏏 Hand Cricket</h1>
+        <p class="subtitle">Tap a finger to bat</p>
+
+        <!-- runs score show section -->
+        <div class="scoreboard">
+          <div class="sc active" id="score0">
+            <div class="sc-label" id="score0-label">Player 1</div>
+            <div class="sc-score" id="score0-val">0</div>
+          </div>
+          <div class="sc" id="score1">
+            <div class="sc-label" id="score1-label">Player 2</div>
+            <div class="sc-score" id="score1-val">0</div>
+          </div>
+          <div class="sc" id="score2">
+            <div class="sc-label" id="score2-label">Player 3</div>
+            <div class="sc-score" id="score2-val">0</div>
+          </div>
+          <div class="sc" id="score-team">
+            <div class="sc-label">Total</div>
+            <div class="sc-score" id="score-team-val">0</div>
+          </div>
+        </div>
+
+        <!-- show chosing fingers -->
+        <div class="arena">
+          <div class="side">
+            <div class="side-label">You</div>
+            <div class="hand-display pending" id="player-hand">✊</div>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="side">
+            <div class="side-label">Computer</div>
+            <div class="hand-display pending" id="com-hand">✊</div>
+          </div>
+        </div>
+
+        <!-- each ball result -->
+        <div class="result-msg" id="result-msg">Choose your move</div>
+
+        <!-- 7 finger buttons -->
+        <div class="btns" id="btn-area">
+          <button class="btn-run" onclick="game(0)">
+            <span class="btn-emoji">✊</span><span class="btn-num">0</span>
+          </button>
+          <button class="btn-run" onclick="game(1)">
+            <span class="btn-emoji">☝️</span><span class="btn-num">1</span>
+          </button>
+          <button class="btn-run" onclick="game(2)">
+            <span class="btn-emoji">✌️</span><span class="btn-num">2</span>
+          </button>
+          <button class="btn-run" onclick="game(3)">
+            <span class="btn-emoji">👌</span><span class="btn-num">3</span>
+          </button>
+          <button class="btn-run" onclick="game(4)">
+            <span class="btn-emoji">🖖</span><span class="btn-num">4</span>
+          </button>
+          <button class="btn-run" onclick="game(5)">
+            <span class="btn-emoji">🖐️</span><span class="btn-num">5</span>
+          </button>
+          <button class="btn-run" onclick="game(6)">
+            <span class="btn-emoji">👍</span><span class="btn-num">6</span>
+          </button>
+        </div>
+
+        <!-- current batting player -->
+        <div class="status-bar" id="status-bar">
+          <span class="player-tag">Player 1</span> is batting
+        </div>
+      </main>
+
+      <!-- Game over result section -->
+      <section class="game-over" id="game-over">
+        <div class="trophy">🏆</div>
+        <div class="go-title" id="go-title">Innings Complete!</div>
+        <div class="go-total" id="go-total"></div>
+        <button class="reset-btn" onclick="resetGameNow()">▶ Play Again</button>
+        <button class="home-btn" onclick="showWelcome()">🏠 Home</button>
+      </section>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

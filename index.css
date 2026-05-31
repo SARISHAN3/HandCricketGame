@@ -1,0 +1,448 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #0f172a;
+  --color-card: #1e293b;
+  --color-border: #334155;
+  --color-green: #16a34a;
+  --color-text: #f1f5f9;
+
+  /* dim colors */
+  --color-green-light: #4ade80;
+  --color-green-bg: #052e16;
+  --color-red: #f87171;
+  --color-text-muted: #94a3b8;
+  --color-text-dim: #64748b;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 640px;
+}
+
+/* ------------- welcome section */
+#welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcome-emoji {
+  font-size: 52px;
+  margin-bottom: 0.25rem;
+}
+.welcome-heading {
+  font-size: 30px;
+  font-weight: 700;
+}
+.welcome-sub {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.welcome-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.w-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+.w-btn:active {
+  transform: scale(0.97);
+}
+
+.w-btn-primary {
+  background: var(--color-green);
+  color: #fff;
+}
+.w-btn-primary:hover {
+  background: #15803d;
+}
+.w-btn-secondary {
+  background: var(--color-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+.w-btn-secondary:hover {
+  background: var(--color-border);
+}
+
+/* ---------------- Name entry section */
+#name-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.name-heading {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+.name-sub {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: -8px;
+}
+
+.name-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 340px;
+}
+
+.name-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.name-field input {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--color-text);
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s;
+}
+.name-field input:focus {
+  border-color: var(--color-green);
+}
+.name-field input::placeholder {
+  color: var(--color-border);
+}
+
+.name-start-btn {
+  background: var(--color-green);
+  border: none;
+  border-radius: 10px;
+  padding: 13px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  max-width: 340px;
+  transition: all 0.2s;
+}
+.name-start-btn:hover {
+  background: #15803d;
+}
+
+.back-link {
+  font-size: 13px;
+  color: var(--color-text-dim);
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.back-link:hover {
+  color: var(--color-text-muted);
+}
+
+/* ------------------------ main game section */
+#game-screen {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/*  score showing  */
+.scoreboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.sc {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.sc.active {
+  background: var(--color-green-bg);
+  border-color: var(--color-green);
+}
+.sc.active .sc-label {
+  color: var(--color-green-light);
+}
+.sc.active .sc-score {
+  color: var(--color-green-light);
+}
+
+.sc-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sc-score {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* display chosing hand */
+.arena {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.side {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.side-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.hand-display {
+  font-size: 56px;
+  line-height: 1;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.hand-display.pending {
+  opacity: 0.25;
+}
+
+.vs-badge {
+  background: var(--color-border);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin: auto;
+}
+
+/* result showing */
+.result-msg {
+  min-height: 30px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+.result-msg.out {
+  color: var(--color-red);
+}
+.result-msg.runs {
+  color: var(--color-text);
+}
+.result-msg.boundary {
+  color: var(--color-green-light);
+}
+.result-msg.six {
+  color: #fbbf24;
+}
+
+/* fingers buttons */
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.btn-run {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 10px 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.btn-run:hover {
+  background: var(--color-border);
+}
+.btn-run:active {
+  transform: scale(0.95);
+}
+
+.btn-emoji {
+  font-size: 26px;
+  line-height: 1;
+}
+.btn-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+/* current playing player */
+.status-bar {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+.status-bar .player-tag {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* game result section */
+.game-over {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 2rem;
+  text-align: center;
+}
+.game-over .trophy {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+.game-over .go-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-green-light);
+  margin-bottom: 6px;
+}
+.game-over .go-total {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+.game-over .go-total strong {
+  color: var(--color-text);
+}
+
+.reset-btn {
+  background: var(--color-green);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  margin-right: 8px;
+}
+.reset-btn:hover {
+  background: #15803d;
+}
+
+.home-btn {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 28px;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.home-btn:hover {
+  background: var(--color-border);
+}
